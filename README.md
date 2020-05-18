@@ -1,2 +1,2 @@
 # gcpinstances
-GCP Instance comparison and quick lookup. 
+GCP Resource comparison and quick lookup. 
