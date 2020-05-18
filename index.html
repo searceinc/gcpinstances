@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Google ComputeEngine Comaparison</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+  <script>var __basePath = '/';</script>
+  <style media="only screen">
+      html, body {
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          box-sizing: border-box;
+          -webkit-overflow-scrolling: touch;
+      }
+
+      html {
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 0;
+          overflow: auto;
+      }
+
+      body {
+          padding: 1rem;
+          overflow: auto;
+      }
+  </style>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
+  <script src="https://unpkg.com/@ag-grid-community/all-modules@23.1.1/dist/ag-grid-community.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Easy Google Cloud Resource Comaparison</h2>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#ComputeEngine">ComputeEngine</a></li>
+      <li><a data-toggle="tab" href="#CloudSQL">CloudSQL</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="ComputeEngine" class="tab-pane fade in active">
+        <br>
+        <div class="row">
+          <div class="col-md-12 flexCol">
+            <div class="form-group"  style="margin-left: 15px; align-items: center">
+                <label for="exampleFormControlSelect1">Regions:</label>
+                <select class="form-control" id="exampleFormControlSelect1" onchange="getnewdata(this.value)">
+                  <option value="IOWA(us-central-1)">IOWA(us-central-1)</option>
+                  <option value="Oregon(us-west1)">Oregon (us-west1)</option>
+                  <option value="Los Angeles(us-west2)">Los Angeles (us-west2)</option>
+                  <option value="Salt Lake City (us-west3)">Salt Lake City (us-west3)</option>
+                  <option value="Las Vegas (us-west4)">Las Vegas (us-west4)</option>
+                  <option value="Northern Virginia (us-east4)">Northern Virginia (us-east4)</option>
+                  <option value="South Carolina (us-east1)">South Carolina (us-east1)</option>
+                  <option value="Montréal (northamerica-northeast1)">Montréal (northamerica-northeast1)</option>
+                  <option value="São Paulo (southamerica-east1)">São Paulo (southamerica-east1)</option>
+                  <option value="Belgium (europe-west1)">Belgium (europe-west1)</option>
+                  <option value="Finland (europe-north1)">Finland (europe-north1)</option>
+                  <option value="Frankfurt (europe-west3)">Frankfurt (europe-west3)</option>
+                  <option value="London (europe-west2)">London (europe-west2)</option>
+                  <option value="Netherlands (europe-west4)">Netherlands (europe-west4)</option>
+                  <option value="Zürich (europe-west6)">Zürich (europe-west6)</option>
+                  <option value="Mumbai (asia-south1)">Mumbai (asia-south1)</option>
+                  <option value="Singapore (asia-southeast1)">Singapore (asia-southeast1)</option>
+                  <option value="Sydney (australia-southeast1)">Sydney (australia-southeast1)</option>
+                  <option value="Hong Kong (asia-east2)">Hong Kong (asia-east2)</option>
+                  <option value="Taiwan (asia-east1)">Taiwan (asia-east1)</option>
+                  <option value="Tokyo (asia-northeast1)">Tokyo (asia-northeast1)</option>
+                  <option value="Osaka (asia-northeast2)">Osaka (asia-northeast2)</option>
+                  <option value="Seoul (asia-northeast3)">Seoul (asia-northeast3)</option>
+                </select>
+            </div>
+            <div class="form-group"  style="margin-left: 15px; align-items: center">
+                <label for="exampleFormControlSelect1">Cost:</label>
+                <select class="form-control" id="exampleFormControlSelect1" >
+                  <option value="#">Hourly</option>
+                  <option>Weekly</option>
+                  <option>Monthly</option>
+                  <option>Yearly</option>
+                </select>
+            </div>
+            <div class="form-group"  style="margin-left: 15px; align-items: center">
+                <label for="exampleFormControlSelect1">Cost:</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                  <option value="#">1 year commitment price</option>
+                  <option value="#">3 year commitment price</option>
+                </select>
+            </div>
+<!--            <div class="dropdown marginRight">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Region:
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#" onclick="getnewdata('IOWA(us-central-1)')">IOWA(us-central-1)</a></li>
+                <li><a href="#">Oregon (us-west1)</a></li>
+                <li><a href="#">Los Angeles (us-west2)</a></li>
+                <li><a href="#">Salt Lake City (us-west3)</a></li>
+                <li><a href="#">Las Vegas (us-west4)</a></li>
+                <li><a href="#">Northern Virginia (us-east4)</a></li>
+                <li><a href="#">South Carolina (us-east1)</a></li>
+                <li><a href="#">Montréal (northamerica-northeast1)</a></li>
+                <li><a href="#">São Paulo (southamerica-east1)</a></li>
+                <li><a href="#">Belgium (europe-west1)</a></li>
+                <li><a href="#">Finland (europe-north1)</a></li>
+                <li><a href="#">Frankfurt (europe-west3)</a></li>
+                <li><a href="#">London (europe-west2)</a></li>
+                <li><a href="#">Netherlands (europe-west4)</a></li>
+                <li><a href="#">Zürich (europe-west6)</a></li>
+                <li><a href="#">Mumbai (asia-south1)</a></li>
+                <li><a href="#">Singapore (asia-southeast1)</a></li>
+                <li><a href="#">Sydney (australia-southeast1)</a></li>
+                <li><a href="#">Hong Kong (asia-east2)</a></li>
+                <li><a href="#">Taiwan (asia-east1)</a></li>
+                <li><a href="#">Tokyo (asia-northeast1)</a></li>
+                <li><a href="#">Osaka (asia-northeast2)</a></li>
+                <li><a href="#">Seoul (asia-northeast3)</a></li>
+              </ul>
+            </div>
+            <div class="dropdown marginRight">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Cost:
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Hourly</a></li>
+                <li><a href="#">Monthly</a></li>
+              </ul>
+            </div>
+            <div class="dropdown marginRight">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Reserved:
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">1 year commitment price</a></li>
+                <li><a href="#">3 year commitment price</a></li>
+              </ul>
+            </div> -->
+            <div class="form-group">
+              <button class="btn btn-primary dropdown-toggle" style="margin-left: 20px; align-items: center" type="button" data-toggle="dropdown" onclick="autoSizeAll(false)">Auto-Size Column</button>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary dropdown-toggle" style="margin-left: 20px; align-items: center" type="button" data-toggle="dropdown" onclick="onBtnSelect()">Compare Select
+              </button>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary dropdown-toggle" style="margin-left: 10px; align-items: center" type="button" data-toggle="dropdown" onClick="window.location.reload();">Clear Filters
+              </button>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary dropdown-toggle" style="margin-left: 10px; align-items: center" type="button" data-toggle="dropdown" onclick="onBtnExport()">CSV
+              </button>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div id="myGrid" style="height: 100vh; overflow: scroll;" class="ag-theme-alpine"></div>
+        <br>
+      </div>
+      <div id="CloudSQL" class="tab-pane fade">
+        <br>
+        <div class="row">
+          <div class="col-md-12 flexCol">
+            <div class="dropdown marginRight">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Region:
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">IOWA(us-central-1)</a></li>
+                <li><a href="#">Oregon (us-west1)</a></li>
+                <li><a href="#">Los Angeles (us-west2)</a></li>
+                <li><a href="#">Salt Lake City (us-west3)</a></li>
+                <li><a href="#">Las Vegas (us-west4)</a></li>
+                <li><a href="#">Northern Virginia (us-east4)</a></li>
+                <li><a href="#">South Carolina (us-east1)</a></li>
+                <li><a href="#">Montréal (northamerica-northeast1)</a></li>
+                <li><a href="#">São Paulo (southamerica-east1)</a></li>
+                <li><a href="#">Belgium (europe-west1)</a></li>
+                <li><a href="#">Finland (europe-north1)</a></li>
+                <li><a href="#">Frankfurt (europe-west3)</a></li>
+                <li><a href="#">London (europe-west2)</a></li>
+                <li><a href="#">Netherlands (europe-west4)</a></li>
+                <li><a href="#">Zürich (europe-west6)</a></li>
+                <li><a href="#">Mumbai (asia-south1)</a></li>
+                <li><a href="#">Singapore (asia-southeast1)</a></li>
+                <li><a href="#">Sydney (australia-southeast1)</a></li>
+                <li><a href="#">Hong Kong (asia-east2)</a></li>
+                <li><a href="#">Taiwan (asia-east1)</a></li>
+                <li><a href="#">Tokyo (asia-northeast1)</a></li>
+                <li><a href="#">Osaka (asia-northeast2)</a></li>
+                <li><a href="#">Seoul (asia-northeast3)</a></li>
+              </ul>
+            </div>
+            <div class="dropdown marginRight">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Cost:
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Hourly</a></li>
+                <li><a href="#">Monthly</a></li>
+              </ul>
+            </div>
+            <div class="dropdown marginRight">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Reserved:
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">1 year commitment price</a></li>
+                <li><a href="#">3 year commitment price</a></li>
+              </ul>
+            </div>
+            <div class="dropdown marginRight">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Compare Select
+              </button>
+            </div>
+            <div class="dropdown marginRight">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" onClick="window.location.reload();">Clear Filters
+              </button>
+            </div>
+            <div class="dropdown marginRight">
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" onclick="onBtnExport()">CSV
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
